@@ -1,6 +1,6 @@
 Package: dockclaimR
 Title: Assess Stability of Molecular Docking Prioritizations
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person(given = "Andrés",
            family = "Monreal Hernández",

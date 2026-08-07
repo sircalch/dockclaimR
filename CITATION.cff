@@ -15,4 +15,4 @@ authors:
 license: MIT
 repository-code: "https://github.com/sircalch/dockclaimR"
 abstract: "Experimental R software for transparent assessment of rank stability in precomputed molecular docking prioritizations. It does not run docking engines or infer molecular binding, biological activity, or clinical efficacy from docking scores."
-version: 0.1.0
+version: 0.1.1

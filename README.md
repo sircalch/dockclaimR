@@ -13,7 +13,7 @@ rescoring methods.
 
 ## Status
 
-**Experimental release (0.1.0).** The repository contains a small,
+**Experimental release (0.1.1).** The repository contains a small,
 fully documented workflow-validation pilot and synthetic examples. It makes no
 claim of biological activity, binding, virtual-screening performance, or
 generalizability. The public API and validation scope may change before a
