@@ -84,3 +84,8 @@ The complete target-specific selection maps, run tables, manifests, docking
 logs, poses, preparation warnings, and derived summaries are retained locally
 outside version control. Their source archives and the protocol above provide
 the reproducibility record; no claim is made from unshared binary outputs.
+
+`tools/write_multitarget_provenance.py` generated a 30-record local manifest
+covering the essential source archives and target-specific derived summaries.
+The manifest SHA-256 after the completed run was
+`B74852F2BD8F19940FC55F721E360D9742A3FC7032247EF1432591F7A3466AAC`.
