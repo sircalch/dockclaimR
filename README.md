@@ -118,3 +118,6 @@ version used and the repository URL. The repository includes both
 [`CITATION.cff`](CITATION.cff) and the R-package citation metadata available
 through `citation("dockclaimR")` after installation. A DOI will be added only
 for a frozen, validated release.
+
+The future archive will exclude DUD-E inputs and generated docking artefacts;
+see [ARCHIVE-POLICY.md](ARCHIVE-POLICY.md) for the third-party material policy.
