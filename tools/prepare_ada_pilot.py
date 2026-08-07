@@ -1,4 +1,4 @@
-"""Create a deterministic, small DUD-E ADA pilot set for workflow testing.
+"""Create a deterministic, small DUD-E target subset for workflow testing.
 
 This script is not an enrichment benchmark and does not estimate biological
 activity. It selects a fixed stratified subset solely to exercise the docking
@@ -16,7 +16,7 @@ from pathlib import Path
 from rdkit import Chem
 
 
-def stable_records(path: Path, class_label: str) -> list[dict]:
+def stable_records(path: Path, class_label: str, target_code: str) -> list[dict]:
     """Return molecules in a deterministic order independent of SDF order."""
     records = []
     if path.suffix == ".gz":
@@ -33,7 +33,7 @@ def stable_records(path: Path, class_label: str) -> list[dict]:
             name = molecule.GetProp("_Name") if molecule.HasProp("_Name") else f"{class_label}_{index:05d}"
             canonical_smiles = Chem.MolToSmiles(molecule, canonical=True)
             token = hashlib.sha256(
-                f"ADA|{class_label}|{name}|{canonical_smiles}".encode("utf-8")
+                f"{target_code}|{class_label}|{name}|{canonical_smiles}".encode("utf-8")
             ).hexdigest()
             records.append(
                 {
@@ -55,6 +55,7 @@ def main() -> None:
     parser.add_argument("--decoys", type=Path, required=True)
     parser.add_argument("--output-sdf", type=Path, required=True)
     parser.add_argument("--selection-csv", type=Path, required=True)
+    parser.add_argument("--target-code", default="ADA")
     parser.add_argument("--n-actives", type=int, default=6)
     parser.add_argument("--n-decoys", type=int, default=18)
     args = parser.parse_args()
@@ -63,8 +64,8 @@ def main() -> None:
         raise ValueError("Both pilot class counts must be positive.")
 
     selected = (
-        stable_records(args.actives, "active")[: args.n_actives]
-        + stable_records(args.decoys, "decoy")[: args.n_decoys]
+        stable_records(args.actives, "active", args.target_code.upper())[: args.n_actives]
+        + stable_records(args.decoys, "decoy", args.target_code.upper())[: args.n_decoys]
     )
     if len(selected) != args.n_actives + args.n_decoys:
         raise ValueError("The requested pilot exceeds available input molecules.")

@@ -21,6 +21,16 @@ DUD-E provides the inputs target-by-target. Each source archive and every
 derived file will receive a SHA-256 record before analysis. Cite DUD-E as
 Mysinger et al. (2012), https://doi.org/10.1021/jm300687e.
 
+## Source acquisition record
+
+The following original DUD-E archives were retrieved before target-specific
+preparation or docking on 2026-08-07. These records do not constitute results.
+
+| Target | Archive | SHA-256 |
+| --- | --- | --- |
+| AMPC | `ampc.tar.gz` | `886B31A35FA5D1E68051F543853A7C43FEA14127B7C35EB8D626E4874BBA3763` |
+| COMT | `comt.tar.gz` | `545F5778D007536741CD05D2F8C855318588C3956AC8A55F1559DB031D3709FD` |
+
 ## Frozen design
 
 For each target:

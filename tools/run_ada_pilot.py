@@ -1,4 +1,4 @@
-"""Run the frozen ADA pilot and write one auditable row per ligand and seed."""
+"""Run a frozen DUD-E target subset and write one auditable row per ligand and seed."""
 
 from __future__ import annotations
 
@@ -30,6 +30,8 @@ def main() -> None:
     parser.add_argument("--selection-csv", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--run-table", type=Path, required=True)
+    parser.add_argument("--target-code", default="ADA")
+    parser.add_argument("--ligand-prefix", default="ada_pilot")
     parser.add_argument("--center", type=float, nargs=3, required=True)
     parser.add_argument("--size", type=float, nargs=3, required=True)
     parser.add_argument("--seeds", type=int, nargs="+", default=[1001, 2002, 3003])
@@ -44,7 +46,7 @@ def main() -> None:
 
     for record in selection:
         index = int(record["pilot_index"])
-        ligand = args.ligand_dir / f"ada_pilot-{index}.pdbqt"
+        ligand = args.ligand_dir / f"{args.ligand_prefix}-{index}.pdbqt"
         if not ligand.exists():
             raise FileNotFoundError(f"Missing prepared ligand: {ligand}")
         for seed in args.seeds:
@@ -69,13 +71,13 @@ def main() -> None:
                 returncode = completed.returncode
             rows.append(
                 {
-                    "ligand_id": f"ada_pilot_{index:02d}",
+                    "ligand_id": f"{args.target_code.lower()}_pilot_{index:02d}",
                     "source_ligand_id": record["ligand_id"],
                     "scenario_id": f"seed_{seed}",
                     "score": match.group(1) if match and returncode == 0 else "",
                     "engine": "AutoDock Vina",
                     "engine_version": "1.2.7",
-                    "receptor_id": "DUD-E ADA receptor.pdb converted with Open Babel 3.1.0",
+                    "receptor_id": f"DUD-E {args.target_code.upper()} receptor.pdb converted with Open Babel 3.1.0",
                     "search_space_id": "crystal_ligand_bbox_plus_5A",
                     "seed": seed,
                     "scoring_method": "vina",
