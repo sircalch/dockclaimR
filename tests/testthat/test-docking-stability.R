@@ -9,6 +9,18 @@ test_that("ranks are calculated within scenario", {
   expect_equal(ranked$rank_within_scenario, c(1, 2, 3, 2, 1, 3))
 })
 
+test_that("rank agreement uses ligands shared by both scenarios", {
+  runs <- data.frame(
+    ligand_id = c("A", "B", "C", "A", "B", "C"),
+    scenario_id = c(rep("first", 3L), rep("second", 3L)),
+    score = c(-9, -8, -7, -6, -7, -8)
+  )
+  agreement <- summarise_rank_agreement(runs)
+  expect_equal(agreement$ligands_shared, 3L)
+  expect_equal(agreement$spearman_rho, -1)
+  expect_error(summarise_rank_agreement(runs[runs$scenario_id == "first", ]), "two scenarios")
+})
+
 test_that("top-k stability remains explicit about scenario coverage", {
   runs <- data.frame(
     ligand_id = c("A", "B", "A", "B", "C"),

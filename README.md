@@ -89,6 +89,10 @@ limits are documented in [BENCHMARK-ADA-PROTOCOL.md](BENCHMARK-ADA-PROTOCOL.md).
 Derived data, docking poses, executable binaries, and environments are kept out
 of version control; their provenance is recorded by the protocol and manifest.
 
+A prespecified three-target extension is documented in
+[BENCHMARK-MULTITARGET-PROTOCOL.md](BENCHMARK-MULTITARGET-PROTOCOL.md). It has
+not been executed or interpreted yet.
+
 ## Relationship to claimtestR
 
 `claimtestR` is a general framework for executable statistical claims.

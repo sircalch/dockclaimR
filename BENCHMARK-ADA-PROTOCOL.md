@@ -56,3 +56,7 @@ It will not estimate virtual-screening performance, because the deliberately
 small stratified subset is not representative of the full DUD-E target set.
 Its top-k summaries are descriptive because the pilot threshold was not
 preregistered before execution.
+
+Pairwise Spearman rank agreement between seeds is reported alongside top-k
+membership. The agreement is descriptive and is calculated only from ligand
+instances shared by the two scenarios.

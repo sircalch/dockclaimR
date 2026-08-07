@@ -72,6 +72,55 @@ rank_docking_runs <- function(data, score_direction = c("lower", "higher")) {
   data
 }
 
+#' Summarise pairwise rank agreement between docking scenarios
+#'
+#' Calculates Spearman rank correlation using only ligand instances present in
+#' both scenarios of a pair. It describes agreement within the supplied study;
+#' it is not a validation of binding or biological activity.
+#'
+#' @param data A validated docking-run table.
+#' @param score_direction Whether lower or higher scores are preferred.
+#'
+#' @return A data frame with one row per scenario pair.
+#' @export
+summarise_rank_agreement <- function(
+    data,
+    score_direction = c("lower", "higher")) {
+  ranked <- rank_docking_runs(data, score_direction = score_direction)
+  scenarios <- sort(unique(as.character(ranked$scenario_id)))
+  if (length(scenarios) < 2L) {
+    stop("At least two scenarios are required for rank agreement.", call. = FALSE)
+  }
+
+  scenario_pairs <- utils::combn(scenarios, 2L, simplify = FALSE)
+  rows <- lapply(scenario_pairs, function(pair) {
+    first <- ranked[as.character(ranked$scenario_id) == pair[[1L]],
+      c("ligand_id", "rank_within_scenario"), drop = FALSE
+    ]
+    second <- ranked[as.character(ranked$scenario_id) == pair[[2L]],
+      c("ligand_id", "rank_within_scenario"), drop = FALSE
+    ]
+    shared <- merge(first, second, by = "ligand_id", suffixes = c("_first", "_second"))
+    if (nrow(shared) < 2L) {
+      rho <- NA_real_
+    } else {
+      rho <- stats::cor(
+        shared$rank_within_scenario_first,
+        shared$rank_within_scenario_second,
+        method = "spearman"
+      )
+    }
+    data.frame(
+      scenario_first = pair[[1L]],
+      scenario_second = pair[[2L]],
+      ligands_shared = nrow(shared),
+      spearman_rho = rho,
+      stringsAsFactors = FALSE
+    )
+  })
+  do.call(rbind, rows)
+}
+
 #' Summarise top-k stability across docking scenarios
 #'
 #' Calculates the proportion of observed scenarios in which each ligand falls

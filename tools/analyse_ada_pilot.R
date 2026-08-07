@@ -53,5 +53,10 @@ write.csv(
   file.path(output_dir, "stability_top5.csv"),
   row.names = FALSE
 )
+write.csv(
+  summarise_rank_agreement(runs),
+  file.path(output_dir, "rank_agreement.csv"),
+  row.names = FALSE
+)
 
 cat("ADA pilot descriptive summaries written to ", output_dir, ".\n", sep = "")
