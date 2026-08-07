@@ -2,9 +2,13 @@
 .RData
 .Ruserdata
 .Rproj.user/
+.venv/
+__pycache__/
 renv/library/
 renv/staging/
 *.tar.gz
 *.Rcheck/
 results/
 data/raw/
+data/derived/
+tools/vina/

@@ -81,6 +81,14 @@ The template does not verify whether reported choices are scientifically
 appropriate. It ensures that omissions are visible rather than silently
 accepted.
 
+## Benchmark development record
+
+The first workflow-validation pilot uses the public ADA target from DUD-E. Its
+scope, frozen sampling procedure, tool versions, hashes, and interpretation
+limits are documented in [BENCHMARK-ADA-PROTOCOL.md](BENCHMARK-ADA-PROTOCOL.md).
+Derived data, docking poses, executable binaries, and environments are kept out
+of version control; their provenance is recorded by the protocol and manifest.
+
 ## Relationship to claimtestR
 
 `claimtestR` is a general framework for executable statistical claims.
