@@ -1,6 +1,6 @@
 # dockclaimR
 
-`dockclaimR` is a planned R package for evaluating whether molecular-docking
+`dockclaimR` is an experimental R package for evaluating whether molecular-docking
 prioritizations are stable enough to support a stated computational claim.
 
 It does not run docking engines and it does not infer binding or biological
@@ -11,8 +11,11 @@ rescoring methods.
 
 ## Status
 
-**Design and protocol stage.** No empirical performance, biological, or
-benchmarking claim is made in this repository yet.
+**Experimental prototype (pre-release).** The repository contains a small,
+fully documented workflow-validation pilot and synthetic examples. It makes no
+claim of biological activity, binding, virtual-screening performance, or
+generalizability. The public API and validation scope may change before a
+stable release.
 
 ## Intended first release
 
@@ -102,5 +105,6 @@ remain separately versioned and separately cited.
 
 ## License and contributions
 
-Licensing, governance, and contribution files will be selected before the first
-public code release. Until then, this repository is a research design record.
+This prototype is released under the [MIT License](LICENSE.md). Contributions
+and reuse should preserve the provenance and interpretation limits documented
+in the benchmark protocols.
