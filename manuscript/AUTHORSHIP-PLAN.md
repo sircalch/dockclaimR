@@ -4,10 +4,10 @@ This is a proposed allocation for author review. It is not a substitute for
 each author's approval of the final manuscript, authorship order, affiliations,
 and contribution statement.
 
-**Lead-author approval:** Andrés Monreal Hernández confirmed this proposed
-order and allocation on 2026-08-07. Written confirmation from Sara Lizbeth
-Franco Amaya and Carlos Ivanhoe Martínez Osorio remains required before any
-external deposit or submission lists the authorship as final.
+**Author confirmation:** Andrés Monreal Hernández, Sara Lizbeth Franco Amaya,
+and Carlos Ivanhoe Martínez Osorio confirmed this order and proposed allocation
+on 2026-08-07. The final manuscript must still be reviewed by all authors
+before an external deposit or submission.
 
 ## Proposed order
 
