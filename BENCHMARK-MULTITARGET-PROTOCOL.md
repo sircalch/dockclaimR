@@ -77,8 +77,8 @@ screening performance.
 | Target | Spearman rho across seed pairs | Top-1 in all three seeds | Top-5 in all three seeds |
 | --- | --- | ---: | ---: |
 | ADA | 0.9704, 0.9748, 0.9817 | 0/24 | 4/24 |
-| AMPC | 0.9852, 0.9870, 0.9983 | 0/24 | 0/24 |
-| COMT | 0.9296, 0.9467, 0.9746 | 0/24 | 0/24 |
+| AMPC | 0.9852, 0.9870, 0.9983 | 1/24 | 5/24 |
+| COMT | 0.9296, 0.9467, 0.9746 | 0/24 | 4/24 |
 
 The complete target-specific selection maps, run tables, manifests, docking
 logs, poses, preparation warnings, and derived summaries are retained locally
