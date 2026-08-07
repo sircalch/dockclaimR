@@ -1,12 +1,20 @@
 Package: dockclaimR
 Title: Assess Stability of Molecular Docking Prioritizations
-Version: 0.0.0.9000
-Authors@R: 
+Version: 0.1.0
+Authors@R: c(
     person(given = "Andrés",
            family = "Monreal Hernández",
            role = c("aut", "cre"),
            email = "andres.monreal@ues.mx",
-           comment = c(ORCID = "0009-0009-1207-8597"))
+           comment = c(ORCID = "0009-0009-1207-8597")),
+    person(given = "Sara Lizbeth",
+           family = "Franco Amaya",
+           role = "aut",
+           comment = c(ORCID = "0009-0005-0272-0241")),
+    person(given = "Carlos Ivanhoe",
+           family = "Martínez Osorio",
+           role = "aut",
+           comment = c(ORCID = "0009-0003-7872-4965")))
 Description: Provides transparent utilities for assessing whether an existing
     molecular docking prioritization is stable across prespecified scenarios.
     The package does not run docking engines and does not interpret docking
