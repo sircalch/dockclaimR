@@ -1,0 +1,63 @@
+---
+title: "Assessing rank stability across docking scenarios"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assessing rank stability across docking scenarios}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## Purpose and boundary
+
+This vignette shows how `dockclaimR` summarizes a *prespecified* ranking
+criterion across several docking scenarios. The values below are synthetic;
+they are included only to demonstrate the software and are not molecular
+docking results.
+
+A stable rank does not establish binding, activity, selectivity, toxicity, or
+experimental usefulness. It is evidence only about the supplied computational
+ranking under the declared scenario set.
+
+```{r}
+library(dockclaimR)
+
+runs <- data.frame(
+  ligand_id = rep(c("candidate_a", "candidate_b", "candidate_c"), 3),
+  scenario_id = rep(c("seed_1", "seed_2", "alternate_receptor"), each = 3),
+  score = c(-8.1, -7.4, -6.8, -7.8, -8.3, -6.5, -7.7, -8.0, -6.6)
+)
+
+ranked <- rank_docking_runs(runs)
+ranked
+```
+
+## Top-k stability
+
+Here, `top_k = 1` means that a ligand must be ranked first inside a scenario.
+The threshold is set before interpreting the result.
+
+```{r}
+stability <- summarise_top_k_stability(runs, top_k = 1)
+stability
+
+claims <- assess_top_k_stability(stability, threshold = 0.90)
+claims
+```
+
+`candidate_a` and `candidate_b` each lead in only one of three scenarios.
+Neither therefore passes a 90% top-1 stability criterion. This is a useful
+negative result: it signals that the proposed prioritization is sensitive to
+the scenario definition and should not be condensed into a single definitive
+ranking.
+
+## Using real docking outputs responsibly
+
+Before using this workflow with real outputs, retain a manifest containing at
+least the engine and version, receptor identifier, search-space identifier,
+score direction, ligand preparation, random-seed policy, and each
+scenario-defining choice. Keep scores in their native scale; `dockclaimR`
+compares ranks within scenarios rather than pooling incompatible score scales.
