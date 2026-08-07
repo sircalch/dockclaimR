@@ -69,7 +69,8 @@ def main() -> None:
                 returncode = completed.returncode
             rows.append(
                 {
-                    "ligand_id": record["ligand_id"],
+                    "ligand_id": f"ada_pilot_{index:02d}",
+                    "source_ligand_id": record["ligand_id"],
                     "scenario_id": f"seed_{seed}",
                     "score": match.group(1) if match and returncode == 0 else "",
                     "engine": "AutoDock Vina",

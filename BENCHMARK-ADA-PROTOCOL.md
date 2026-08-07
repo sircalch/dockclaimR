@@ -37,6 +37,10 @@ substances, allowing a small, traceable pilot before a larger study.
 6. Store one row per ligand and seed in the `dockclaimR` run-table contract;
    derive stability only after the manifest validates.
 
+The source data contain a repeated ligand label. Each selected record therefore
+receives a unique `ada_pilot_XX` analysis identifier; the original DUD-E label
+is retained as `source_ligand_id`.
+
 ## Tool record
 
 - AutoDock Vina 1.2.7 binary SHA-256:
@@ -50,3 +54,5 @@ substances, allowing a small, traceable pilot before a larger study.
 The pilot will describe reproducibility of rankings within this exact setup.
 It will not estimate virtual-screening performance, because the deliberately
 small stratified subset is not representative of the full DUD-E target set.
+Its top-k summaries are descriptive because the pilot threshold was not
+preregistered before execution.
