@@ -42,6 +42,27 @@ The validation protocol is defined before implementation in
 [PROJECT-CHARTER.md](PROJECT-CHARTER.md). Benchmark results will be added only
 after the scripts, inputs, software versions, and outputs can be released.
 
+## Minimal synthetic example
+
+The example below is deliberately synthetic: its values are not docking
+results and must not be interpreted as molecular evidence.
+
+```r
+library(dockclaimR)
+
+runs <- data.frame(
+  ligand_id = rep(c("candidate_a", "candidate_b", "candidate_c"), 2),
+  scenario_id = rep(c("seed_1", "seed_2"), each = 3),
+  score = c(-8.1, -7.4, -6.8, -7.8, -8.3, -6.5)
+)
+
+stability <- summarise_top_k_stability(runs, top_k = 1)
+assess_top_k_stability(stability, threshold = 0.90)
+```
+
+The output reports only whether a ligand met the declared ranking criterion in
+the supplied scenarios. It does not claim that the ligand binds a target.
+
 ## Relationship to claimtestR
 
 `claimtestR` is a general framework for executable statistical claims.
