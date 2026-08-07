@@ -7,6 +7,10 @@ before circulation or submission. The study reports computational rank
 stability only; it does not report binding, biological activity, efficacy, or
 virtual-screening performance.
 
+The proposed author order and CRediT allocation are recorded separately in
+[`AUTHORSHIP-PLAN.md`](AUTHORSHIP-PLAN.md) and require confirmation from every
+author before external use.
+
 ## Abstract
 
 Molecular-docking scores are frequently used to prioritize compounds, yet the
