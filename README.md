@@ -63,6 +63,24 @@ assess_top_k_stability(stability, threshold = 0.90)
 The output reports only whether a ligand met the declared ranking criterion in
 the supplied scenarios. It does not claim that the ligand binds a target.
 
+## Provenance manifest
+
+Real analyses must be accompanied by a complete one-row manifest before the
+run table is assessed. The manifest records the engine and version, receptor,
+search space, score direction, ligand preparation, scenario definition, seed
+policy, run-table path, and creation time.
+
+```r
+manifest <- docking_manifest_template()
+manifest[] <- "recorded-before-analysis"
+manifest$score_direction <- "lower"
+validate_docking_manifest(manifest)
+```
+
+The template does not verify whether reported choices are scientifically
+appropriate. It ensures that omissions are visible rather than silently
+accepted.
+
 ## Relationship to claimtestR
 
 `claimtestR` is a general framework for executable statistical claims.

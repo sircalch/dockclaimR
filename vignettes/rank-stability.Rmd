@@ -9,6 +9,7 @@ vignette: >
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(dockclaimR)
 ```
 
 ## Purpose and boundary
@@ -22,9 +23,19 @@ A stable rank does not establish binding, activity, selectivity, toxicity, or
 experimental usefulness. It is evidence only about the supplied computational
 ranking under the declared scenario set.
 
-```{r}
-library(dockclaimR)
+## Record provenance first
 
+Before an analysis, complete and validate a manifest. Values here are
+placeholders solely for this synthetic demonstration.
+
+```{r}
+manifest <- docking_manifest_template()
+manifest[] <- "synthetic-example"
+manifest$score_direction <- "lower"
+validate_docking_manifest(manifest)
+```
+
+```{r}
 runs <- data.frame(
   ligand_id = rep(c("candidate_a", "candidate_b", "candidate_c"), 3),
   scenario_id = rep(c("seed_1", "seed_2", "alternate_receptor"), each = 3),

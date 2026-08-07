@@ -40,3 +40,14 @@ test_that("invalid or duplicate inputs fail clearly", {
   )
   expect_error(summarise_top_k_stability(valid, top_k = "1"), "positive integer")
 })
+
+test_that("manifest records required provenance before analysis", {
+  manifest <- docking_manifest_template()
+  expect_error(validate_docking_manifest(manifest), "empty required")
+
+  manifest[] <- "recorded"
+  manifest$score_direction <- "lower"
+  expect_identical(validate_docking_manifest(manifest), manifest)
+  manifest$score_direction <- "unknown"
+  expect_error(validate_docking_manifest(manifest), "lower.*higher")
+})
