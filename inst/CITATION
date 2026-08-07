@@ -1,0 +1,8 @@
+bibentry(
+  bibtype = "Manual",
+  title = "dockclaimR: transparent rank-stability assessment for precomputed molecular docking prioritizations",
+  author = person(given = "Andrés", family = "Monreal Hernández"),
+  year = "2026",
+  note = "Experimental pre-release software; cite the exact version used.",
+  url = "https://github.com/sircalch/dockclaimR"
+)

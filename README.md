@@ -1,5 +1,7 @@
 # dockclaimR
 
+[![R-CMD-check](https://github.com/sircalch/dockclaimR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sircalch/dockclaimR/actions/workflows/R-CMD-check.yaml)
+
 `dockclaimR` is an experimental R package for evaluating whether molecular-docking
 prioritizations are stable enough to support a stated computational claim.
 
@@ -108,3 +110,11 @@ remain separately versioned and separately cited.
 This prototype is released under the [MIT License](LICENSE.md). Contributions
 and reuse should preserve the provenance and interpretation limits documented
 in the benchmark protocols.
+
+## Citation
+
+Until a versioned archival record exists, cite the exact Git commit or package
+version used and the repository URL. The repository includes both
+[`CITATION.cff`](CITATION.cff) and the R-package citation metadata available
+through `citation("dockclaimR")` after installation. A DOI will be added only
+for a frozen, validated release.

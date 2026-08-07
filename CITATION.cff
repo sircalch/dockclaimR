@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use dockclaimR, please cite the software record and the version used."
+title: "dockclaimR: transparent rank-stability assessment for precomputed molecular docking prioritizations"
+type: software
+authors:
+  - family-names: "Monreal Hernández"
+    given-names: "Andrés"
+    orcid: "https://orcid.org/0009-0009-1207-8597"
+license: MIT
+repository-code: "https://github.com/sircalch/dockclaimR"
+abstract: "Experimental R software for transparent assessment of rank stability in precomputed molecular docking prioritizations. It does not run docking engines or infer molecular binding, biological activity, or clinical efficacy from docking scores."
+version: 0.0.0.9000
